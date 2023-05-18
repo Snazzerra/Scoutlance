@@ -59,7 +59,7 @@ class CandidateItemWidget extends StatelessWidget {
                 radius: 30,
                 backgroundColor: MyTheme.primary.shade200,
                 child: Text(
-                  candidate.fullName!.substring(0, 2),
+                  getShortName(candidate.fullName!),
                   style: Theme.of(context).primaryTextTheme.headlineSmall,
                 ),
               ),
@@ -309,5 +309,14 @@ class CandidateItemWidget extends StatelessWidget {
     } else {
       return Colors.grey;
     }
+  }
+
+  String getShortName(String fullName) {
+    List stringList = fullName.split(" ");
+    return stringList
+        .map((e) => e.toString().substring(0, 1))
+        .toList()
+        .join("")
+        .toUpperCase();
   }
 }
